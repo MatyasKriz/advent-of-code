@@ -22,7 +22,7 @@ final class Solution2Tests2024: SolutionTests<AoC_2024.Solution2> {
     }
 
     override var output1: String? { "663" }
-    override var output2: String? { "" }
+    override var output2: String? { "692" }
     override var input: String {
         """
         45 47 48 50 51 52 54 51

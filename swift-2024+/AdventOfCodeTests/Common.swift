@@ -128,6 +128,16 @@ extension String {
     }
 }
 
+extension Substring {
+    var string: String {
+        String(self)
+    }
+
+    var int: Int {
+        string.int
+    }
+}
+
 extension String {
     subscript(int: Int) -> Character {
         self[index(startIndex, offsetBy: int)]
