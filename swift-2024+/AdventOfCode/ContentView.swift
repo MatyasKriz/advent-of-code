@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  AdventOfCode2024
+//  AdventOfCode
 //
 //  Created by Matty Cross on 03.12.2024.
 //

@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "095B2F61-DD99-4F33-ACF5-DD9E23092433",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:AdventOfCode.xcodeproj",
+      "identifier" : "4886122D2CFF1507008761C1",
+      "name" : "AdventOfCode"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:AdventOfCode.xcodeproj",
+        "identifier" : "4886123E2CFF1508008761C1",
+        "name" : "AdventOfCodeTests"
+      }
+    }
+  ],
+  "version" : 1
+}
