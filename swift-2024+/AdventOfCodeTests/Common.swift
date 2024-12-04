@@ -1,4 +1,5 @@
 import XCTest
+import Foundation
 import Algorithms
 
 struct TestError: Error {}
@@ -204,5 +205,114 @@ extension Set {
 extension Int {
     var string: String {
         String(self)
+    }
+}
+
+extension Collection {
+    subscript<R>(safe range: R) -> Self.SubSequence where R : RangeExpression, Self.Index == R.Bound {
+        self[range.relative(to: self).clamped(to: startIndex..<endIndex)]
+    }
+}
+
+extension Collection {
+    func print(_ comment: String? = nil) -> Self {
+        Swift.print("\(comment.map { "\($0): " } ?? "")\(String(describing: self))")
+        return self
+    }
+}
+
+struct OmniRange: Hashable {
+    static func all(origin: Point, length: Int) -> [OmniRange] {
+        orthogonal(origin: origin, length: length) + diagonal(origin: origin, length: length)
+    }
+
+    static func orthogonal(origin: Point, length: Int) -> [OmniRange] {
+        [
+            OmniRange(origin: origin, length: length, direction: .up),
+            OmniRange(origin: origin, length: length, direction: .right),
+            OmniRange(origin: origin, length: length, direction: .down),
+            OmniRange(origin: origin, length: length, direction: .left),
+        ]
+    }
+
+    static func diagonal(origin: Point, length: Int) -> [OmniRange] {
+        [
+            OmniRange(origin: origin, length: length, direction: .upRight),
+            OmniRange(origin: origin, length: length, direction: .downRight),
+            OmniRange(origin: origin, length: length, direction: .downLeft),
+            OmniRange(origin: origin, length: length, direction: .upLeft),
+        ]
+    }
+
+    struct Point: Hashable {
+        let x, y: Int
+    }
+    enum Direction {
+        case up
+        case upRight
+        case right
+        case downRight
+        case down
+        case downLeft
+        case left
+        case upLeft
+    }
+
+    let origin: Point
+    let length: Int
+    let direction: Direction
+}
+
+extension Collection where Element: Collection, Self.Index == Int, Element.Index == Int {
+    subscript(_ range: OmniRange) -> [Element.Element] {
+        let width = self[0].count
+        let height = self.count
+
+        guard width > 0 && height > 0 else { return [] }
+
+        let origin = range.origin
+        let offset = Swift.min(range.length, Swift.max(width, height)) - 1
+
+        guard offset > 0 else { return [self[origin.y][origin.x]] }
+
+        let validXRange = 0...(width - 1)
+        let validYRange = 0...(height - 1)
+
+        switch range.direction {
+        // Orthogonal (the easy ones)
+        case .up:
+            return Array(self[safe: (origin.y - offset)...origin.y].map { $0[origin.x] }.reversed())
+        case .right:
+            return Array(self[origin.y][safe: origin.x...(origin.x + offset)])
+        case .down:
+            return self[safe: origin.y...(origin.y + offset)].map { $0[origin.x] }
+        case .left:
+            return Array(self[origin.y][safe: (origin.x - offset)...origin.x].reversed())
+        // Diagonal
+        case .upRight:
+            return zip(
+                (origin.x...(origin.x + offset)).clamped(to: validXRange),
+                ((origin.y - offset)...origin.y).clamped(to: validYRange).reversed()
+            )
+            .map { x, y in self[y][x] }
+        case .downRight:
+            return zip(
+                (origin.x...(origin.x + offset)).clamped(to: validXRange),
+                (origin.y...(origin.y + offset)).clamped(to: validYRange)
+            )
+            .map { x, y in self[y][x] }
+        case .downLeft:
+            return zip(
+                ((origin.x - offset)...origin.x).clamped(to: validXRange).reversed(),
+                (origin.y...(origin.y + offset)).clamped(to: validYRange)
+            )
+            .map { x, y in self[y][x] }
+        case .upLeft:
+            return zip(
+                ((origin.x - offset)...origin.x).clamped(to: validXRange).reversed(),
+                ((origin.y - offset)...origin.y).clamped(to: validYRange).reversed()
+            )
+            .map { x, y in self[y][x] }
+        }
     }
 }
