@@ -14,6 +14,7 @@
 		4886127F2CFF18FE008761C1 /* HashTreeCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 4886127E2CFF18FE008761C1 /* HashTreeCollections */; };
 		488612812CFF18FE008761C1 /* HeapModule in Frameworks */ = {isa = PBXBuildFile; productRef = 488612802CFF18FE008761C1 /* HeapModule */; };
 		488612BA2D005321008761C1 /* Atomics in Frameworks */ = {isa = PBXBuildFile; productRef = 488612B92D005321008761C1 /* Atomics */; };
+		488612CF2D034EF7008761C1 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 488612CE2D034EF7008761C1 /* Algorithms */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,13 @@
 			);
 			target = 4886123E2CFF1508008761C1 /* AdventOfCodeTests */;
 		};
+		488612D12D034F7D008761C1 /* Exceptions for "AdventOfCodeTests" folder in "AdventOfCode" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Common.swift,
+			);
+			target = 4886122D2CFF1507008761C1 /* AdventOfCode */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +60,7 @@
 		488612422CFF1508008761C1 /* AdventOfCodeTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				488612D12D034F7D008761C1 /* Exceptions for "AdventOfCodeTests" folder in "AdventOfCode" target */,
 				488612822CFF194B008761C1 /* Exceptions for "AdventOfCodeTests" folder in "AdventOfCodeTests" target */,
 			);
 			path = AdventOfCodeTests;
@@ -64,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				488612CF2D034EF7008761C1 /* Algorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +100,7 @@
 				488612AB2CFF25E4008761C1 /* AdventOfCode.xctestplan */,
 				488612302CFF1507008761C1 /* AdventOfCode */,
 				488612422CFF1508008761C1 /* AdventOfCodeTests */,
+				488612CD2D034EF7008761C1 /* Frameworks */,
 				4886122F2CFF1507008761C1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,6 +112,13 @@
 				4886123F2CFF1508008761C1 /* AdventOfCodeTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		488612CD2D034EF7008761C1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +141,7 @@
 			);
 			name = AdventOfCode;
 			packageProductDependencies = (
+				488612CE2D034EF7008761C1 /* Algorithms */,
 			);
 			productName = AdventOfCode;
 			productReference = 4886122E2CFF1507008761C1 /* AdventOfCode.app */;
@@ -575,6 +594,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 488612B82D005321008761C1 /* XCRemoteSwiftPackageReference "swift-atomics" */;
 			productName = Atomics;
+		};
+		488612CE2D034EF7008761C1 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 488612742CFF18B2008761C1 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
