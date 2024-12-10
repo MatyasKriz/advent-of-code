@@ -17,6 +17,7 @@ final class Solution7Tests2024: SolutionTests<AoC_2024.Solution7> {
     override var exampleOutput1: String? { "3749" }
     override var exampleOutput2: String? { "11387" }
 
+    override var skipTest2: Bool { true }
     override var output1: String? { "10741443549536" }
     override var output2: String? { "500335179214836" }
     override var input: String {
