@@ -1,6 +1,8 @@
 import Foundation
 
 final class Solution9Tests2024: SolutionTests<AoC_2024.Solution9> {
+    override var skip: Bool { true }
+
     override var exampleInput1: String {
         """
         2333133121414131402
@@ -19,8 +21,6 @@ final class Solution9Tests2024: SolutionTests<AoC_2024.Solution9> {
         ]
     }
 
-    override var skipTest1: Bool { true }
-    override var skipTest2: Bool { true }
     override var output1: String? { "6421128769094" }
     override var output2: String? { "" }
     override var input: String {

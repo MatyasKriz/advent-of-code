@@ -2,7 +2,7 @@ import Foundation
 
 extension AoC_2024 {
     final class Solution5: Solution {
-        func solve1(input: String) async throws -> String? {
+        func solve1(metadata: Metadata, input: String) async throws -> String? {
             let (ruleList, updateList) = input.components(separatedBy: "\n\n").tuple()
 
             let rules: [Int: Set<Int>] = ruleList.lines().reduce(into: [:]) { rules, rule in
@@ -34,7 +34,7 @@ extension AoC_2024 {
             return counter.string
         }
 
-        func solve2(input: String) async throws -> String? {
+        func solve2(metadata: Metadata, input: String) async throws -> String? {
             let (ruleList, updateList) = input.components(separatedBy: "\n\n").tuple()
 
             let rules: [Int: Set<Int>] = ruleList.lines().reduce(into: [:]) { rules, rule in

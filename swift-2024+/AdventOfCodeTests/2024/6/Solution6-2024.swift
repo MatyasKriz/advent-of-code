@@ -58,7 +58,7 @@ extension AoC_2024 {
             }
         }
 
-        func solve1(input: String) async throws -> String? {
+        func solve1(metadata: Metadata, input: String) async throws -> String? {
             let map = input.lines().map { $0.map(String.init) }
             let xBounds = 0..<map[0].count
             let yBounds = 0..<map.count
@@ -105,7 +105,7 @@ extension AoC_2024 {
             return visited.count.string
         }
 
-        func solve2(input: String) async throws -> String? {
+        func solve2(metadata: Metadata, input: String) async throws -> String? {
             let map = input.lines().map { $0.map(String.init) }
             let xBounds = 0..<map[0].count
             let yBounds = 0..<map.count

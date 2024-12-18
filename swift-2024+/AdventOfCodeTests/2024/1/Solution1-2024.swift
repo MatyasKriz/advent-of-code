@@ -2,7 +2,7 @@ import Foundation
 
 extension AoC_2024 {
     final class Solution1: Solution {
-        func solve1(input: String) async throws -> String? {
+        func solve1(metadata: Metadata, input: String) async throws -> String? {
             var leftSide: [Int] = []
             var rightSide: [Int] = []
             for (left, right) in input.lines().map({ $0.components(separatedBy: "   ").tuple() }) {
@@ -16,7 +16,7 @@ extension AoC_2024 {
                 .string
         }
 
-        func solve2(input: String) async throws -> String? {
+        func solve2(metadata: Metadata, input: String) async throws -> String? {
             var leftSide: [Int] = []
             var rightSide: [Int] = []
             for (left, right) in input.lines().map({ $0.components(separatedBy: "   ").tuple() }) {

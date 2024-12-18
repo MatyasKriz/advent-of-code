@@ -2,7 +2,7 @@ import Foundation
 
 extension AoC_2024 {
     final class Solution2: Solution {
-        func solve1(input: String) async throws -> String? {
+        func solve1(metadata: Metadata, input: String) async throws -> String? {
             let lines = input.lines().map { $0.components(separatedBy: " ").map(\.int) }
 
             var safeLines = 0
@@ -38,7 +38,7 @@ extension AoC_2024 {
             return safeLines.string
         }
 
-        func solve2(input: String) async throws -> String? {
+        func solve2(metadata: Metadata, input: String) async throws -> String? {
             let lines = input.lines().map { $0.components(separatedBy: " ").map(\.int) }
 
             var safeLines = 0

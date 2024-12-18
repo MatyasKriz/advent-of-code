@@ -2,7 +2,7 @@ import Foundation
 
 extension AoC_2024 {
     final class Solution3: Solution {
-        func solve1(input: String) async throws -> String? {
+        func solve1(metadata: Metadata, input: String) async throws -> String? {
             let regex = /mul\((?<lhs>\d{1,3}),(?<rhs>\d{1,3})\)/
             return input.matches(of: regex)
                 .map { match in
@@ -12,7 +12,7 @@ extension AoC_2024 {
                 .string
         }
 
-        func solve2(input: String) async throws -> String? {
+        func solve2(metadata: Metadata, input: String) async throws -> String? {
             let regex = /((?<inst>do\(\)|don't\(\))|(mul\((?<lhs>\d{1,3}),(?<rhs>\d{1,3})\)))/
             var isEnabled = true
             return input.matches(of: regex)

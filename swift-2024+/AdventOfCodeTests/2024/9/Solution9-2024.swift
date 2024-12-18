@@ -60,7 +60,7 @@ extension AoC_2024 {
             }
         }
 
-        func solve1(input: String) async throws -> String? {
+        func solve1(metadata: Metadata, input: String) async throws -> String? {
             struct Disk: CustomDebugStringConvertible {
                 var storage: [Component]
 
@@ -138,7 +138,7 @@ extension AoC_2024 {
             return result.string
         }
 
-        func solve2(input: String) async throws -> String? {
+        func solve2(metadata: Metadata, input: String) async throws -> String? {
             struct Disk: CustomDebugStringConvertible {
                 var storage: [Component]
 

@@ -19,7 +19,7 @@ extension AoC_2024 {
             }
         }
 
-        func solve1(input: String) async throws -> String? {
+        func solve1(metadata: Metadata, input: String) async throws -> String? {
             let tests = input.lines().map { line in
                 let (result, operandString) = line.components(separatedBy: ": ").tuple()
                 return (result.int, operandString.components(separatedBy: " ").map(\.int))
@@ -60,7 +60,7 @@ extension AoC_2024 {
             return returnedResult.string
         }
 
-        func solve2(input: String) async throws -> String? {
+        func solve2(metadata: Metadata, input: String) async throws -> String? {
             let tests = input.lines().map { line in
                 let (result, operandString) = line.components(separatedBy: ": ").tuple()
                 return (result.int, operandString.components(separatedBy: " ").map(\.int))

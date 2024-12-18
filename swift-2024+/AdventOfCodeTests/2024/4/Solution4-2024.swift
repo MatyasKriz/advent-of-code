@@ -10,7 +10,7 @@ extension AoC_2024 {
             let character: Character
         }
 
-        func solve1(input: String) async throws -> String? {
+        func solve1(metadata: Metadata, input: String) async throws -> String? {
             let lines = input.lines()
             let grid: [[Point]] = lines.enumerated().map { y, line in
                 line.enumerated().map { x, character in
@@ -51,7 +51,7 @@ extension AoC_2024 {
             .string
         }
 
-        func solve2(input: String) async throws -> String? {
+        func solve2(metadata: Metadata, input: String) async throws -> String? {
             let lines = input.lines()
             let grid: [[Point]] = lines.enumerated().map { y, line in
                 line.enumerated().map { x, character in
