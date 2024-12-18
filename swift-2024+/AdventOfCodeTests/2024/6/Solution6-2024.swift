@@ -149,32 +149,44 @@ extension AoC_2024 {
                 }
             }
 
-            var possibleObstacles: Set<Point> = []
-            for snapshot in path {
-                let snapshotLookahead = snapshot.lookahead
-                let runnerObstacles = obstacles.union([snapshotLookahead])
+            return await withTaskGroup(of: Point?.self, returning: Int.self) { taskGroup in
+                for snapshot in path {
+                    taskGroup.addTask {
+                        let snapshotLookahead = snapshot.lookahead
+                        let runnerObstacles = obstacles.union([snapshotLookahead])
+                        var isLoop = false
 
-                var runner = snapshot
-                while true {
-                    let runnerLookahead = runner.lookahead
-                    if runnerObstacles.contains(runnerLookahead) {
-                        runner.turn()
-                    } else {
-                        if isInBounds(point: runnerLookahead) {
-                            runner.advance()
-                        } else {
-                            break
+                        var runner = snapshot
+                        while true {
+                            let runnerLookahead = runner.lookahead
+                            if runnerObstacles.contains(runnerLookahead) {
+                                runner.turn()
+                            } else {
+                                if isInBounds(point: runnerLookahead) {
+                                    runner.advance()
+                                } else {
+                                    break
+                                }
+                            }
+
+                            if runner == snapshot {
+                                isLoop = true
+                                break
+                            }
                         }
-                    }
 
-                    if runner == snapshot {
-                        possibleObstacles.insert(snapshotLookahead)
-                        break
+                        return isLoop ? snapshotLookahead : nil
                     }
                 }
-            }
 
-            return possibleObstacles.count.string
+                var possibleObstacles: Set<Point> = []
+                for await task in taskGroup {
+                    guard let task else { continue }
+                    possibleObstacles.insert(task)
+                }
+                return possibleObstacles.count
+            }
+            .string
         }
     }
 }

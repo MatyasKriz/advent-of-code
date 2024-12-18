@@ -10,10 +10,17 @@ final class Solution9Tests2024: SolutionTests<AoC_2024.Solution9> {
     override var exampleOutput2: String? { "2858" }
 
     override var additionalTests: [AdditionalTest] {
-        [AdditionalTest(input: "12345", output1: "60", output2: "132")]
+        [
+            AdditionalTest(input: "12345", output1: "60", output2: "132"),
+            AdditionalTest(input: "2333133121414130402", output2: "2826"),
+            AdditionalTest(input: "2333133121414031402", output2: "2794"),
+            AdditionalTest(input: "2333133121414030412", output2: "2826"),
+            AdditionalTest(input: "2333133121414333402", output2: "2986"),
+        ]
     }
 
     override var skipTest1: Bool { true }
+    override var skipTest2: Bool { true }
     override var output1: String? { "6421128769094" }
     override var output2: String? { "" }
     override var input: String {

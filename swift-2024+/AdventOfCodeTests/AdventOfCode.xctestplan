@@ -9,6 +9,15 @@
     }
   ],
   "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:AdventOfCode.xcodeproj",
+          "identifier" : "4886123E2CFF1508008761C1",
+          "name" : "AdventOfCodeTests"
+        }
+      ]
+    },
     "targetForVariableExpansion" : {
       "containerPath" : "container:AdventOfCode.xcodeproj",
       "identifier" : "4886122D2CFF1507008761C1",

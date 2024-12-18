@@ -179,8 +179,9 @@ extension AoC_2024 {
                 })
                 .first(where: { $0.element.id == fileId }) {
                 if let (spaceIndex, spaceSize) = disk.space(fittingSize: file.size), spaceIndex < fileIndex {
-                    print("file:", file)
-                    print("found space:", (spaceIndex, spaceSize))
+//                    print("file", file.id, fileIndex, file.size)
+//                    print("space", spaceIndex, spaceSize)
+
                     disk.storage.remove(at: fileIndex)
                     disk.storage[spaceIndex] = .file(file)
 
@@ -195,7 +196,7 @@ extension AoC_2024 {
                     case (.some(.space(let lhsSize)), nil), (.some(.space(let lhsSize)), .some):
                         disk.storage[fileIndex - 1] = .space(size: lhsSize + file.size)
                     default:
-                        break
+                        disk.storage.insert(.space(size: file.size), at: fileIndex)
                     }
 
                     let remainingSpaceSize = spaceSize - file.size
@@ -209,9 +210,9 @@ extension AoC_2024 {
             var index = 0
             var result = 0
             for component in disk.storage {
+                defer { index += component.size }
                 guard case .file(let file) = component else { continue }
                 result += (index..<(index + file.size)).reduce(0) { $0 + $1 * file.id }
-                index += file.size
             }
             return result.string
         }
